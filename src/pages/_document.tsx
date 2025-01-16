@@ -5,6 +5,14 @@ export default function Document() {
     <Html lang='en'>
       <Head>
         <title>RE-Target Agent Direct: Available Markets</title>
+        <meta
+          name='description'
+          content='Advertise to REALTORS, Advertise to Real Estate Agents, Market to REALTOS, Market to real estate agents'
+        />
+        <meta
+          name='keywords'
+          content='Advertise, REALTORS, Advertise to Real Estate Agents, Market to REALTOS, Market to real estate agents'
+        />
       </Head>
       <body>
         <Main />

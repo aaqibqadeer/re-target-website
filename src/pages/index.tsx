@@ -3,6 +3,7 @@ import { GeneralMarketTable } from '@/components/GeneralMarketTable'
 import { Header } from '@/components/Header'
 import { Spinner } from '@/components/Spinner'
 import useFetchFirebaseData from '@/hooks/useFetchFirebaseData'
+import Head from 'next/head'
 import { useEffect, Fragment } from 'react'
 
 export default function Home() {
@@ -14,6 +15,9 @@ export default function Home() {
 
   return (
     <Fragment>
+      <Head>
+        <title>RE-Target Agent Direct: Available Markets</title>
+      </Head>
       <Header />
       <main>
         {loading && <Spinner />}
