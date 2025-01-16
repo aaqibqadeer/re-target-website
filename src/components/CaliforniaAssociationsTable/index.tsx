@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState, useMemo } from 'react'
 import DataTable from 'react-data-table-component'
 import { FaLink } from 'react-icons/fa'
+import { Properties } from '@/lib/tableProperties'
 
 export const CaliforniaAssociationsTable = ({
   data,
@@ -37,27 +38,32 @@ export const CaliforniaAssociationsTable = ({
       selector: (row: any) => row.name,
       sortable: true,
       wrap: true,
+      width: '25%',
     },
     {
       name: 'City',
       selector: (row: any) => row.city,
       sortable: true,
+      wrap: true,
     },
     {
       name: 'State',
       selector: (row: any) => row.state,
       sortable: true,
+      wrap: true,
     },
     {
       name: 'Service Area',
       selector: (row: any) => row.serviceArea || 'TBD',
       sortable: true,
+      wrap: true,
     },
     {
       name: 'Agents',
       selector: (row: any) => row.users,
       sortable: true,
       format: (row: any) => `${row.users.toLocaleString()}+`,
+      wrap: true,
     },
     {
       name: 'Rate Card',
@@ -71,12 +77,13 @@ export const CaliforniaAssociationsTable = ({
           <FaLink />
         </a>
       ),
-      width: '100px',
+      // width: '100px',
+      wrap: true,
     },
   ]
   return (
     <div className='general-table'>
-      <h2 className='text-2xl font-semibold text-gray-800 mb-4 '>
+      <h2 className='text-3xl font-semibold text-gray-800 mb-4 '>
         California Associations
       </h2>
       <div className='mb-4'>
@@ -89,23 +96,7 @@ export const CaliforniaAssociationsTable = ({
         />
       </div>
 
-      <DataTable
-        columns={columns}
-        data={filteredData}
-        pagination
-        fixedHeader
-        highlightOnHover
-        responsive
-        striped
-        customStyles={{
-          headRow: {
-            style: {
-              backgroundColor: '#f3f4f6',
-              fontWeight: 'bold',
-            },
-          },
-        }}
-      />
+      <DataTable columns={columns} data={filteredData} {...Properties} />
     </div>
   )
 }

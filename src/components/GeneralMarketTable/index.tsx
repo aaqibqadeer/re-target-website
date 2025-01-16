@@ -34,6 +34,7 @@ export const GeneralMarketTable = ({ data }: { data: MarketCategory }) => {
       selector: (row: any) => row.name,
       sortable: true,
       wrap: true,
+      width: '25%',
     },
     {
       name: 'City',
@@ -60,6 +61,7 @@ export const GeneralMarketTable = ({ data }: { data: MarketCategory }) => {
       selector: (row: any) => row.users,
       sortable: true,
       format: (row: any) => `${row.users.toLocaleString()}+`,
+      wrap: true,
       // width: '120px',
     },
     {
@@ -74,12 +76,13 @@ export const GeneralMarketTable = ({ data }: { data: MarketCategory }) => {
           <FaLink />
         </a>
       ),
-      width: '100px',
+      // width: '100px',
+      wrap: true,
     },
   ]
   return (
     <div className='general-table'>
-      <h2 className='text-2xl font-semibold text-gray-800 mb-4 '>
+      <h2 className='text-3xl font-semibold text-gray-800 mb-4 '>
         Available Markets
       </h2>
       <div className='mb-4'>

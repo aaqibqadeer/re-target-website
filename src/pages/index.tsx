@@ -18,7 +18,10 @@ export default function Home() {
       <main>
         {loading && <Spinner />}
         {error && (
-          <div className='container mx-auto p-4'> No Data Available</div>
+          <div className='container mx-auto p-4 text-4xl'>
+            {' '}
+            No Data Available
+          </div>
         )}
         {!error && !loading && data?.length > 0 && (
           <div className='container mx-auto p-4'>
