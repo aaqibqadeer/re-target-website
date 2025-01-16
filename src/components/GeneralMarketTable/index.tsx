@@ -5,6 +5,7 @@ import DataTable from 'react-data-table-component'
 import { FaLink } from 'react-icons/fa'
 import { Properties } from '@/lib/tableProperties'
 import { MarketCategory } from '@/lib/data'
+import { commonProperties } from '@/lib/properties'
 
 export const GeneralMarketTable = ({ data }: { data: MarketCategory }) => {
   const [filterText, setFilterText] = useState('')
@@ -82,7 +83,9 @@ export const GeneralMarketTable = ({ data }: { data: MarketCategory }) => {
   ]
   return (
     <div className='general-table'>
-      <h2 className='text-3xl font-semibold text-gray-800 mb-4 '>
+      <h2
+        className={`font-semibold text-gray-800 mb-4 ${commonProperties.H2_SIZE}`}
+      >
         Available Markets
       </h2>
       <div className='mb-4'>

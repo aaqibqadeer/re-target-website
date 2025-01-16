@@ -13,7 +13,7 @@ export interface MarketCategory {
   list: Market[]
 }
 
-export const data: MarketCategory[] = [
+const data: MarketCategory[] = [
   {
     name: 'General Market',
     list: [

@@ -5,6 +5,7 @@ import { useState, useMemo } from 'react'
 import DataTable from 'react-data-table-component'
 import { FaLink } from 'react-icons/fa'
 import { Properties } from '@/lib/tableProperties'
+import { commonProperties } from '@/lib/properties'
 
 export const CaliforniaAssociationsTable = ({
   data,
@@ -83,7 +84,9 @@ export const CaliforniaAssociationsTable = ({
   ]
   return (
     <div className='general-table'>
-      <h2 className='text-3xl font-semibold text-gray-800 mb-4 '>
+      <h2
+        className={`font-semibold text-gray-800 mb-4 ${commonProperties.H2_SIZE}`}
+      >
         California Associations
       </h2>
       <div className='mb-4'>

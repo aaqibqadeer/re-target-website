@@ -14,7 +14,9 @@ export const Properties = {
     },
     rows: {
       style: {
-        fontSize: '1rem',
+        fontSize: '1.3rem',
+        paddingTop: '0.5rem',
+        paddingBottom: '0.5rem',
       },
     },
   },
