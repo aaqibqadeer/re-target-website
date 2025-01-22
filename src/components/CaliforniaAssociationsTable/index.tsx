@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState, useMemo } from 'react'
 import DataTable from 'react-data-table-component'
 import { FaLink } from 'react-icons/fa'
-import { Properties } from '@/lib/tableProperties'
+import { Properties, tableColumns } from '@/lib/tableProperties'
 import { commonProperties } from '@/lib/properties'
 
 export const CaliforniaAssociationsTable = ({
@@ -25,63 +25,6 @@ export const CaliforniaAssociationsTable = ({
     })
   }, [filterText])
 
-  const columns = [
-    {
-      name: '',
-      cell: (row: any) => (
-        <Image src={row.icon} alt='icon' width={50} height={60} />
-      ),
-      selector: (row: any) => row.icon,
-      width: '80px',
-    },
-    {
-      name: 'Name',
-      selector: (row: any) => row.name,
-      sortable: true,
-      wrap: true,
-      width: '25%',
-    },
-    {
-      name: 'City',
-      selector: (row: any) => row.city,
-      sortable: true,
-      wrap: true,
-    },
-    {
-      name: 'State',
-      selector: (row: any) => row.state,
-      sortable: true,
-      wrap: true,
-    },
-    {
-      name: 'Service Area',
-      selector: (row: any) => row.serviceArea || 'TBD',
-      sortable: true,
-      wrap: true,
-    },
-    {
-      name: 'Agents',
-      selector: (row: any) => row.users,
-      sortable: true,
-      format: (row: any) => `${row.users.toLocaleString()}+`,
-      wrap: true,
-    },
-    {
-      name: 'Rate Card',
-      cell: (row: any) => (
-        <a
-          href={row.url}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='text-blue-600 hover:text-blue-800 p-4'
-        >
-          <FaLink />
-        </a>
-      ),
-      // width: '100px',
-      wrap: true,
-    },
-  ]
   return (
     <div className='general-table'>
       <h2
@@ -99,7 +42,7 @@ export const CaliforniaAssociationsTable = ({
         />
       </div>
 
-      <DataTable columns={columns} data={filteredData} {...Properties} />
+      <DataTable columns={tableColumns} data={filteredData} {...Properties} />
     </div>
   )
 }
