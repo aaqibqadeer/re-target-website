@@ -1,9 +1,7 @@
 import React from 'react'
 import { MarketCategory } from '@/lib/data'
-import Image from 'next/image'
 import { useState, useMemo } from 'react'
 import DataTable from 'react-data-table-component'
-import { FaLink } from 'react-icons/fa'
 import { Properties, tableColumns } from '@/lib/tableProperties'
 import { commonProperties } from '@/lib/properties'
 

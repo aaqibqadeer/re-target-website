@@ -22,6 +22,9 @@ export const Properties = {
         paddingBottom: '0.5rem',
       },
     },
+    cells: {
+      style: {},
+    },
   },
 }
 
@@ -33,47 +36,49 @@ export const tableColumns = [
       <Image src={row.icon} alt='icon' width={100} height={60} />
     ),
     selector: (row: any) => row.icon,
-    width: '130px',
+    minWidth: '130px',
   },
   {
     name: 'Name',
     selector: (row: any) => row.name,
     sortable: true,
     wrap: true,
-    width: '25%',
+    grow: 4,
   },
-  // {
-  //   name: 'City',
-  //   selector: (row: any) => row.city,
-  //   sortable: true,
-  //   // width: '180px',
-  //   wrap: true,
-  // },
+  {
+    name: 'City',
+    selector: (row: any) => row.city,
+    sortable: true,
+    wrap: true,
+    omit: true,
+  },
   {
     name: 'State',
     selector: (row: any) => row.state,
     sortable: true,
-    width: '120px',
     wrap: true,
+    format: (row: any) => `${row.state.slice(0, 2).toUpperCase()}`,
   },
   {
     name: 'Service Area',
     selector: (row: any) => row.serviceArea || 'TBD',
     sortable: true,
     wrap: true,
-    width: '350px',
+    grow: 5,
   },
   {
-    name: 'Agents',
+    name: 'Agents (~)',
     selector: (row: any) => row.users,
     sortable: true,
-    format: (row: any) => `${row.users.toLocaleString()}+`,
+    format: (row: any) => `${row.users.toLocaleString()}`,
     wrap: true,
-    width: '120px',
+    right: true,
+    grow: 1.3,
   },
   {
     id: 'rateCard',
     name: 'Rate Card',
+    right: true,
     cell: (row: any) => (
       <a
         href={row.url}
@@ -84,7 +89,6 @@ export const tableColumns = [
         <FaLink />
       </a>
     ),
-    width: '100px',
     wrap: true,
   },
 ]

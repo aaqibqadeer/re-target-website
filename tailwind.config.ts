@@ -64,5 +64,6 @@ const config: Config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
+  safelist: ['text-blue-600', 'hover:text-blue-800', 'p-4'],
 }
-export default config;
+export default config
