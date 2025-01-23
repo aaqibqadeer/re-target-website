@@ -1,13 +1,15 @@
 import { CaliforniaAssociationsTable } from '@/components/CaliforniaAssociationsTable'
+import { DownloadPDFButton } from '@/components/DownloadPDFButton'
 import { GeneralMarketTable } from '@/components/GeneralMarketTable'
 import { Header } from '@/components/Header'
 import { Spinner } from '@/components/Spinner'
 import useFetchFirebaseData from '@/hooks/useFetchFirebaseData'
 import Head from 'next/head'
-import { useEffect, Fragment } from 'react'
+import { useEffect, Fragment, useRef } from 'react'
 
 export default function Home() {
   const { fetchData, data, error, loading } = useFetchFirebaseData()
+  const pageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     fetchData()
@@ -28,7 +30,10 @@ export default function Home() {
           </div>
         )}
         {!error && !loading && data?.length > 0 && (
-          <div className='container mx-auto p-4'>
+          <div className='container mx-auto p-4' ref={pageRef}>
+            <div className='mb-8'>
+              {/* <DownloadPDFButton targetRef={pageRef} /> */}
+            </div>
             <GeneralMarketTable data={data[0]} />
             <div className='my-16' />
             <CaliforniaAssociationsTable data={data[1]} />

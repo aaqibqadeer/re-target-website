@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const Header = () => {
   return (
-    <header className='bg-[#f6f6f6] mb-8'>
+    <header className='bg-[#f6f6f6] '>
       <div className='container mx-auto px-4 py-4 lg:py-0'>
         <div className='flex flex-col lg:flex-row items-center justify-between'>
           <div className='flex-1 grow-[2] my-4'>
