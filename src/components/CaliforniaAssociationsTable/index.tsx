@@ -28,7 +28,7 @@ export const CaliforniaAssociationsTable = ({
       <h2
         className={`font-semibold text-gray-800 mb-4 ${commonProperties.H2_SIZE}`}
       >
-        California Associations
+        {data.name}
       </h2>
       <div className='mb-4'>
         <input

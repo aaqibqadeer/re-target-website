@@ -1,5 +1,3 @@
-import { CaliforniaAssociationsTable } from '@/components/CaliforniaAssociationsTable'
-import { DownloadPDFButton } from '@/components/DownloadPDFButton'
 import { GeneralMarketTable } from '@/components/GeneralMarketTable'
 import { Header } from '@/components/Header'
 import { Spinner } from '@/components/Spinner'
@@ -31,12 +29,14 @@ export default function Home() {
         )}
         {!error && !loading && data?.length > 0 && (
           <div className='container mx-auto p-4' ref={pageRef}>
-            <div className='mb-8'>
-              {/* <DownloadPDFButton targetRef={pageRef} /> */}
-            </div>
-            <GeneralMarketTable data={data[0]} />
-            <div className='my-16' />
-            <CaliforniaAssociationsTable data={data[1]} />
+            {data.map((market, index) => {
+              return (
+                <GeneralMarketTable
+                  data={market}
+                  showScheduleButton={index === 0}
+                />
+              )
+            })}
           </div>
         )}
       </main>

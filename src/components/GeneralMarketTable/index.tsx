@@ -4,8 +4,15 @@ import DataTable from 'react-data-table-component'
 import { Properties, tableColumns as columns } from '@/lib/tableProperties'
 import { MarketCategory } from '@/lib/data'
 import { commonProperties } from '@/lib/properties'
+import { ScheduleButton } from '../ScheduleButton'
 
-export const GeneralMarketTable = ({ data }: { data: MarketCategory }) => {
+export const GeneralMarketTable = ({
+  data,
+  showScheduleButton = false,
+}: {
+  data: MarketCategory
+  showScheduleButton?: boolean
+}) => {
   const [filterText, setFilterText] = useState('')
 
   const filteredData = useMemo(() => {
@@ -20,12 +27,19 @@ export const GeneralMarketTable = ({ data }: { data: MarketCategory }) => {
   }, [filterText])
 
   return (
-    <div className='general-table'>
-      <h2
-        className={`font-semibold text-gray-800 mb-4 ${commonProperties.H2_SIZE}`}
-      >
-        Available Markets
-      </h2>
+    <div className='general-table my-16'>
+      <div className='flex flex-col lg:flex-row '>
+        <h2
+          className={`font-semibold text-gray-800 mb-4 ${commonProperties.H2_SIZE}`}
+        >
+          {data.name}
+        </h2>
+        {showScheduleButton && (
+          <div className='flex justify-end flex-1 py-4 lg:py-0'>
+            <ScheduleButton />
+          </div>
+        )}
+      </div>
       <div className='mb-4'>
         <input
           type='text'
