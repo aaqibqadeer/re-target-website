@@ -24,7 +24,7 @@ export const GeneralMarketTable = ({
         item.serviceArea?.toLowerCase().includes(filterText.toLowerCase())
       )
     })
-  }, [filterText])
+  }, [filterText, data.list])
 
   return (
     <div className='general-table my-16'>
@@ -35,7 +35,7 @@ export const GeneralMarketTable = ({
           {data.name}
         </h2>
         {showScheduleButton && (
-          <div className='flex justify-end flex-1 py-4 lg:py-0'>
+          <div className='flex lg:justify-end flex-1 py-4 lg:py-0'>
             <ScheduleButton />
           </div>
         )}

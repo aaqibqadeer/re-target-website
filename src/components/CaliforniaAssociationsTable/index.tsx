@@ -21,7 +21,7 @@ export const CaliforniaAssociationsTable = ({
         item.serviceArea?.toLowerCase().includes(filterText.toLowerCase())
       )
     })
-  }, [filterText])
+  }, [filterText, data.list])
 
   return (
     <div className='general-table'>

@@ -34,6 +34,7 @@ export default function Home() {
                 <GeneralMarketTable
                   data={market}
                   showScheduleButton={index === 0}
+                  key={market.name + index}
                 />
               )
             })}
