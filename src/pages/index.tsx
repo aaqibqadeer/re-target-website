@@ -31,11 +31,7 @@ export default function Home() {
           <div className='container mx-auto p-4' ref={pageRef}>
             {data.map((market, index) => {
               return (
-                <GeneralMarketTable
-                  data={market}
-                  showScheduleButton={index === 0}
-                  key={market.name + index}
-                />
+                <GeneralMarketTable data={market} key={market.name + index} />
               )
             })}
           </div>

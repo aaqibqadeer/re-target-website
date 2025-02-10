@@ -8,7 +8,7 @@ import { ScheduleButton } from '../ScheduleButton'
 
 export const GeneralMarketTable = ({
   data,
-  showScheduleButton = false,
+  showScheduleButton = true,
 }: {
   data: MarketCategory
   showScheduleButton?: boolean
