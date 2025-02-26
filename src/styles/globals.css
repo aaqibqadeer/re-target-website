@@ -120,6 +120,14 @@
   }
 }
 
-.rdt_TableCol_Sortable .sc-jZCRgm {
+/* .rdt_TableCol_Sortable .sc-jZCRgm {
   opacity: 0.5 !important
 }
+
+.rdt_TableRow {
+  flex-direction: column;
+  gap: 4px;
+}
+.rdt_TableCell {
+  justify-content: flex-start !important;
+} */

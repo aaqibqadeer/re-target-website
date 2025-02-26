@@ -1,4 +1,4 @@
-import { GeneralMarketTable } from '@/components/GeneralMarketTable'
+import { ResponsiveMarketTable } from '@/components/ResponsiveMarketTable'
 import { Header } from '@/components/Header'
 import { Spinner } from '@/components/Spinner'
 import useFetchFirebaseData from '@/hooks/useFetchFirebaseData'
@@ -31,7 +31,10 @@ export default function Home() {
           <div className='mx-auto p-4' ref={pageRef}>
             {data.map((market, index) => {
               return (
-                <GeneralMarketTable data={market} key={market.name + index} />
+                <ResponsiveMarketTable
+                  data={market}
+                  key={market.name + index}
+                />
               )
             })}
           </div>

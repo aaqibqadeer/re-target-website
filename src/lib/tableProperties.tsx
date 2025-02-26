@@ -51,6 +51,7 @@ export const tableColumns = [
     sortable: true,
     wrap: true,
     omit: true,
+    // hide: 'md',
   },
   {
     name: 'State',
@@ -58,6 +59,7 @@ export const tableColumns = [
     sortable: true,
     wrap: true,
     format: (row: any) => `${row.state.slice(0, 2).toUpperCase()}`,
+    // hide: 'md',
   },
   {
     name: 'Service Area',
@@ -65,6 +67,7 @@ export const tableColumns = [
     sortable: true,
     wrap: true,
     grow: 5,
+    // hide: 'md',
   },
   {
     name: 'Agents (~)',
@@ -74,11 +77,13 @@ export const tableColumns = [
     wrap: true,
     right: true,
     grow: 1.3,
+    // hide: 'md',
   },
   {
     id: 'rateCard',
     name: 'Rate Card',
     right: true,
+    // hide: 'md',
     cell: (row: any) => (
       <a
         href={row.url}
