@@ -154,7 +154,7 @@ export default function Editor() {
             </button>
           </div>
 
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+          <div className='grid grid-cols-1 lg:grid-cols-1 gap-4'>
             <div className='bg-white rounded-lg shadow-md'>
               <h2 className='text-xl font-semibold mb-2 p-4 border-b'>
                 JSON Editor

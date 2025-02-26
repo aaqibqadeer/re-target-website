@@ -28,7 +28,7 @@ export default function Home() {
           </div>
         )}
         {!error && !loading && data?.length > 0 && (
-          <div className='container mx-auto p-4' ref={pageRef}>
+          <div className='mx-auto p-4' ref={pageRef}>
             {data.map((market, index) => {
               return (
                 <GeneralMarketTable data={market} key={market.name + index} />
