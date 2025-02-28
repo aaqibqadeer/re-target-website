@@ -80,10 +80,8 @@ interface TableViewSectionProps {
 
 export const TableViewSection: React.FC<TableViewSectionProps> = ({ filteredData }) => {
   return (
-    <div className='bg-white rounded-lg shadow-md p-4'>
-      <h2 className='text-xl font-semibold mb-2 pb-4 border-b'>
-        Table View
-      </h2>
+    <div className='bg-white rounded-lg shadow-md p-4 border border-gray-200'>
+      <h2 className='text-xl font-semibold mb-2 pb-4 border-b'>Table View</h2>
       <div className='overflow-y-auto max-h-[600px]'>
         {filteredData.map((section, sectionIndex) => (
           <SectionTable key={sectionIndex} section={section} />

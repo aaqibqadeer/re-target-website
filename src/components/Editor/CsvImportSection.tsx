@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Papa from 'papaparse'
+import { useToast } from '@/context/ToastContext'
 
 interface CsvImportSectionProps {
   data: any
@@ -20,9 +21,10 @@ export const CsvImportSection: React.FC<CsvImportSectionProps> = ({
   setJsonValue,
   setModifiedData,
   setJsonError,
-  setCsvImportSuccess
+  setCsvImportSuccess,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const { showToast } = useToast()
 
   const handleCsvFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -79,6 +81,9 @@ export const CsvImportSection: React.FC<CsvImportSectionProps> = ({
           setJsonError(null)
           setCsvImportSuccess(true)
 
+          // Add success toast
+          showToast('success', 'CSV data successfully imported to the editor')
+
           // Reset file input
           if (fileInputRef.current) {
             fileInputRef.current.value = ''
@@ -86,18 +91,20 @@ export const CsvImportSection: React.FC<CsvImportSectionProps> = ({
           setCsvFile(null)
         } catch (err) {
           setJsonError('Error converting CSV to JSON')
+          showToast('error', 'Failed to process CSV file')
           console.error('CSV import error:', err)
         }
       },
       error: (error) => {
         setJsonError(`CSV parsing error: ${error.message}`)
+        showToast('error', `Error parsing CSV: ${error.message}`)
         console.error('CSV parsing error:', error)
       },
     })
   }
 
   return (
-    <div className='mb-6 p-4 bg-white rounded-lg shadow-md'>
+    <div className='mb-6 p-4 bg-white rounded-lg shadow-md border border-gray-200'>
       <h2 className='text-xl font-semibold mb-3'>Import Data from CSV</h2>
       <div className='flex flex-wrap items-center gap-3'>
         <input
@@ -116,9 +123,9 @@ export const CsvImportSection: React.FC<CsvImportSectionProps> = ({
         </button>
       </div>
       {csvImportSuccess && (
-        <div className='mt-3 p-2 bg-green-100 text-green-800 rounded'>
-          CSV data successfully imported to the editor. Review the data
-          and click "Update Data" to save changes.
+        <div className='mt-3 p-2 bg-green-100 text-green-800 rounded border border-green-200'>
+          CSV data successfully imported to the editor. Review the data and
+          click "Update Data" to save changes.
         </div>
       )}
       <div className='mt-3 text-sm text-gray-600'>

@@ -7,6 +7,7 @@ import { SearchBar } from '@/components/Editor/SearchBar'
 import { CsvImportSection } from '@/components/Editor/CsvImportSection'
 import { JsonEditorSection } from '@/components/Editor/JsonEditorSection'
 import { TableViewSection } from '@/components/Editor/TableViewSection'
+import { UpdateActionBar } from '@/components/Editor/UpdateActionBar'
 
 export default function Editor() {
   const [jsonError, setJsonError] = useState<string | null>(null)
@@ -74,13 +75,18 @@ export default function Editor() {
             setCsvImportSuccess={setCsvImportSuccess}
           />
 
+          <UpdateActionBar
+            jsonValue={jsonValue}
+            jsonError={jsonError}
+            csvImportSuccess={csvImportSuccess}
+            setCsvImportSuccess={setCsvImportSuccess}
+          />
+
           <div className='grid grid-cols-1 lg:grid-cols-1 gap-4'>
             <JsonEditorSection
               jsonValue={jsonValue}
               handleJsonChange={handleJsonChange}
               jsonError={jsonError}
-              csvImportSuccess={csvImportSuccess}
-              setCsvImportSuccess={setCsvImportSuccess}
             />
 
             <TableViewSection filteredData={filteredData} />

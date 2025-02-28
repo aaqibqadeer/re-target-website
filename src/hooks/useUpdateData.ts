@@ -1,25 +1,15 @@
 import { useState } from 'react'
+import { useAuth } from './useAuth'
 import { REQUEST_URL } from './useFetchFirebaseData'
 
-interface FirestoreState {
-  loading: boolean
-  error: Error | null
-}
-
-interface useUpdateDataReturn {
-  updateDocument: (data: any) => Promise<void>
-  loading: boolean
-  error: Error | null
-}
-
-export const useUpdateData = (): useUpdateDataReturn => {
-  const [state, setState] = useState<FirestoreState>({
-    loading: false,
-    error: null,
-  })
+export const useUpdateData = () => {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const { getAuthToken } = useAuth()
 
   const updateDocument = async (data: any) => {
-    setState({ loading: true, error: null })
+    setLoading(true)
+    setError(null)
 
     const firestoreData = {
       fields: {
@@ -30,35 +20,34 @@ export const useUpdateData = (): useUpdateDataReturn => {
     }
 
     try {
-      const idToken = localStorage.getItem('authToken')
-      if (!idToken) throw new Error('No auth token found')
+      const token = getAuthToken()
+      if (!token) {
+        throw new Error('Authentication required')
+      }
 
       const response = await fetch(REQUEST_URL, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${idToken}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(firestoreData),
       })
 
+      const result = await response.json()
+
       if (!response.ok) {
-        throw new Error(`Firestore update failed: ${response.statusText}`)
+        throw new Error(result.error || 'Failed to update data')
       }
 
-      setState({ loading: false, error: null })
-    } catch (error) {
-      setState({
-        loading: false,
-        error:
-          error instanceof Error ? error : new Error('Unknown error occurred'),
-      })
+      setLoading(false)
+      return { success: true, data: result }
+    } catch (err) {
+      setLoading(false)
+      setError(err instanceof Error ? err.message : 'Unknown error')
+      return { success: false, error: err }
     }
   }
 
-  return {
-    updateDocument,
-    loading: state.loading,
-    error: state.error,
-  }
+  return { updateDocument, loading, error }
 }
