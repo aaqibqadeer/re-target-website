@@ -123,7 +123,7 @@ export const useAuth = () => {
       const data = (await response.json()) as RefreshResponse
 
       if (!response.ok) {
-        throw new Error(data.error?.message || 'Token refresh failed')
+        throw new Error((data as any).error?.message || 'Token refresh failed')
       }
 
       // Update stored tokens
