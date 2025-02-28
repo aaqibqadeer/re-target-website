@@ -125,7 +125,7 @@ export const CsvImportSection: React.FC<CsvImportSectionProps> = ({
       {csvImportSuccess && (
         <div className='mt-3 p-2 bg-green-100 text-green-800 rounded border border-green-200'>
           CSV data successfully imported to the editor. Review the data and
-          click "Update Data" to save changes.
+          click Update Data to save changes.
         </div>
       )}
       <div className='mt-3 text-sm text-gray-600'>
