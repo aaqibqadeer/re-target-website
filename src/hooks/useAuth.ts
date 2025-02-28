@@ -165,7 +165,7 @@ export const useAuth = () => {
       const data = (await response.json()) as AuthResponse
 
       if (!response.ok) {
-        throw new Error(data.error?.message || 'Authentication failed')
+        throw new Error((data as any).error?.message || 'Authentication failed')
       }
 
       // Store tokens and expiration
