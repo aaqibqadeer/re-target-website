@@ -9,7 +9,6 @@ export const ResponsiveMarketTable = ({ data }: { data: MarketCategory }) => {
   const [sortField, setSortField] = useState<string | null>(null)
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
 
-  // Filter data based on search text but keep original order
   const filteredData = useMemo(() => {
     return data.list.filter((item) => {
       return (
@@ -21,15 +20,11 @@ export const ResponsiveMarketTable = ({ data }: { data: MarketCategory }) => {
     })
   }, [filterText, data.list])
 
-  // Sort data for mobile/tablet view only when a sort field is selected
   const sortedData = useMemo(() => {
-    if (!sortField) return filteredData; // Return filtered data in original order if no sort field
-    
     return [...filteredData].sort((a, b) => {
       let compareValueA = a[sortField as keyof typeof a]
       let compareValueB = b[sortField as keyof typeof b]
 
-      // Handle undefined or string comparison
       compareValueA = compareValueA || ''
       compareValueB = compareValueB || ''
 

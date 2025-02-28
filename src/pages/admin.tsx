@@ -14,7 +14,6 @@ export default function Admin() {
 
     const result = await signIn(email, password)
     if (result) {
-      localStorage.setItem('authToken', result.idToken)
       router.push('/editor')
     }
   }
