@@ -4,11 +4,9 @@ import { useRouter } from 'next/router'
 interface AuthRequest {
   email: string
   password: string
-  returnSecureToken?: boolean
 }
 
 interface RefreshRequest {
-  grant_type: string
   refresh_token: string
 }
 
@@ -37,12 +35,12 @@ interface AuthState {
   isAuthenticated: boolean
 }
 
-const API_KEY = 'AIzaSyAxatIcgqwbrsFZLT2IhKgzJ2YajENAUQw'
-const AUTH_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
-const REFRESH_URL = `https://securetoken.googleapis.com/v1/token?key=${API_KEY}`
-
 // Token will be refreshed 5 minutes before expiration
 const REFRESH_TIME_MARGIN = 5 * 60 * 1000
+
+// Use our secure serverless API endpoints
+const AUTH_URL = '/api/auth/login'
+const REFRESH_URL = '/api/auth/refresh'
 
 export const useAuth = () => {
   const router = useRouter()
@@ -118,7 +116,6 @@ export const useAuth = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          grant_type: 'refresh_token',
           refresh_token: refreshToken,
         } as RefreshRequest),
       })
@@ -162,7 +159,6 @@ export const useAuth = () => {
         body: JSON.stringify({
           email,
           password,
-          returnSecureToken: true,
         } as AuthRequest),
       })
 
